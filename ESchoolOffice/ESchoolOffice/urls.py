@@ -25,4 +25,5 @@ urlpatterns = [
     url(r'^user_settings/', include('user_settings.urls')),
     path('academics/', include('academic_settings.urls')),
     url(r'student/', include('student.urls')),
+    url(r'static_settings/', include('static_settings.urls')),
 ]

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SchoolProfileView</title>
+</head>
+<body>
+<form action="prof_created" method="post">
+    {% csrf_token %}
+    <table>
+         {{ form.as_ }}
+        <p>ProfileName: {{ object.schoolprofile }}</p>
+    </table>
+    <input type="submit" value="Submit">
+</form>
+</body>
+</html>

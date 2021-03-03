@@ -10,91 +10,102 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 </head>
 <body id="top">
-
+<form method="post">
+    {% csrf_token %}
 <div class="container">
   <h2>Institution Profile</h2>
-
   <div class="row">
-   <div class="col-md-12">
-            <div class="card table-bordered">
-                <div class="card-header">
-                    Institution
-                </div>
+    <div class="col-md-12">
+        <div class="card table-bordered">
+            <div class="card-header">
+
+            </div>
                 <div class="card-body">
                     <div class="row card-body2">
-
                         <div class="col-md-1">
                         </div>
-
                         <div class="col-md-3 text-right">
-                           School Name: 
+                           School Name:
                         </div>
-                        <div class="col-md-6 bg-warning">
-                        vdf
+                        <div class="col-md-6">
+                            <td>{{form.profile_name}}</td>
                         </div>
-                    </div>
-
+                     </div>
                     <div class="row card-body2">
                         <div class="col-md-1">
                         </div>
-
                         <div class="col-md-3 offset-md-1 text-right">
-                            Address: 
+                            Address:
+
                         </div>
                         <div class="col-md-6">
+                            <td>{{form.profile_address}}</td>
                         </div>
                     </div>
-
                     <div class="row">
-
                         <div class="col-md-1 card-body2">
                         </div>
-
                         <div class="col-md-3 offset-md-1 text-right">
-                            Contact No: 
+                            Contact No:
+
                         </div>
                         <div class="col-md-6">
+                            <td>{{form.profile_contactno}}</td>
                         </div>
                     </div>
                      <div class="row">
-
-                        <div class="col-md-1 card-body2">
+                         <div class="col-md-1 card-body2">
                         </div>
+                         <div class="col-md-3 offset-md-1 text-right">
+                            Email:
 
-                        <div class="col-md-3 offset-md-1 text-right">
-                            Email: 
                         </div>
-                        <div class="col-md-6">
+                         <div class="col-md-6">
+                              <td>{{form.profile_email}}</td>
                         </div>
                     </div>
-
                     <div class="row">
                         <div class="col-md-4 card-body2">
                         </div>
                         <div class="col-md-4">
-                        
-                        <button class="btn btn-primary btn-btn">
+                            <button class="btn btn-primary btn-btn">
                             Reset
                         </button>
                         </div>
-                        
                         <div class="col-md-4">
                         <button class="btn btn-success btn-btn" onclick="return confirm('Are you sure you want to Register Institution');">
                             Register
                         </button>
                         </div>
-
-
                     </div>
-
-
-                    </div>
+                </div>
                 </div>
             </div>
     </div>
 </div>
 </div>
+    <div class="container">
+    <div>
+        <table border="1">
+            <tr>
+                <th>Sl No</th>
+                <th>School Profile name</th>
+                <th>Edit</th>
+                <th>Delete</th>
+                <th>View</th>
+            </tr>
+            {% for obj in data %}
+            <tr>
+                <td>{{forloop.counter}}</td>
+                <td>{{obj.profile_name}}</td>
+                <td><a href="{% url 'static_settings:school_edit' pk=obj.id %}">Edit</a></td>
+                <td><a href="{% url 'static_settings:school_delete' pk=obj.id %}">Delete</a></td>
 
-
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+    </div>
+</form>
 </body>
 </html>
